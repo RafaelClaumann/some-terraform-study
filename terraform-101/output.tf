@@ -2,6 +2,10 @@ output "instance_arn" {
   value = aws_instance.ubuntu.arn
 }
 
+output "instance_ami" {
+  value = data.aws_ami.ubuntu_ami.image_id
+}
+
 output "public_ip" {
   value = aws_instance.ubuntu.public_ip
 }
