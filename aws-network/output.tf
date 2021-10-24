@@ -13,4 +13,15 @@ output "my-vpc-default-sg" {
 output "my-vpc-default-rt" {
   value = aws_vpc.my-vpc.default_route_table_id
 }
- 
+
+output "public-subnet-arn" {
+  value = aws_subnet.public-subnet.arn
+}
+
+output "public-subnet-az" {
+  value = aws_subnet.public-subnet.availability_zone
+}
+
+output "public-subnet-cidr" {
+  value = aws_subnet.public-subnet.cidr_block
+}
