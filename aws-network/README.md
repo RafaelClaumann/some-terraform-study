@@ -1,5 +1,7 @@
 # AWS NETWORK e EC2 Instance
 
+O objetivo é criar uma VPC, seus componentes, provisionar uma instância EC2, instalar o servidor apache2 na instância e acessa-la remotamente via SSH ou HTTP.
+
 ## AWS Network
 - [main](https://github.com/RafaelClaumann/some-terraform-study/blob/aws-vpc-gateway-routetable-terraform/aws-network/code/main.tf)
 - [vpc](https://github.com/RafaelClaumann/some-terraform-study/blob/aws-vpc-gateway-routetable-terraform/aws-network/network-module/vpc-resource.tf)
