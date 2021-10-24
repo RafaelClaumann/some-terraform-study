@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "vpc-cidr-block" {
   description = "VPC CIDR block"
   type        = string
-  default     =  "10.0.0.0/16"
+  default     = "10.0.0.0/16"
 }
 
 variable "public-route-table-cidr-block" {
