@@ -1,5 +1,16 @@
 # some-terraform-study
 
+Repositório utilizado para armazenar laboratórios de Terraform. <br>
+A branch master representa a junção de todos os laboratórios. <br>
+Para cada novo laboratório uma nova branch é criada e, ao final do laboratório, é feito um merge com a master. <br>
+As pastas dos laboratórios possuem arquivos README para ajudar a compreender o que foi realizado. <br>
+
+- [LAB01: terraform-101](https://github.com/RafaelClaumann/some-terraform-study/tree/terraform-101) `/terraform-101/`
+- [LAB02: do-basico-a-modulos](https://github.com/RafaelClaumann/some-terraform-study/tree/do-basico-a-modulos) `/do-basico-a-modulos/`
+- [LAB03: aws-vpc-gateway-routetable-terraform](https://github.com/RafaelClaumann/some-terraform-study/tree/aws-vpc-gateway-routetable-terraform) `/aws-network/`
+
+
+#
 
 **provider** é o bloco de conexão com o provider(provedor), por exemplo AWS.
 ``` hcl
