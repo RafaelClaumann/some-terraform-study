@@ -1,4 +1,4 @@
 provider "aws" {
   region  = var.aws_region
-  profile = "terraform-study"
+  profile = var.programmatic-access-profile
 }

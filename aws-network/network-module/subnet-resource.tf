@@ -1,6 +1,5 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones
-
 data "aws_availability_zones" "available" {
   state = "available"
 }
@@ -16,7 +15,7 @@ resource "aws_subnet" "public-subnet" {
   availability_zone = local.first_zone
 
   tags = {
-    Name = "my-public-subnet"
+    Name = var.public-subnet-name
     AZ   = join("-", ["publicc", "subnet", local.first_zone])
   }
 }

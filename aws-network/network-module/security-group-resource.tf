@@ -14,6 +14,7 @@ resource "aws_security_group" "http-ssh-security-group" {
   vpc_id      = aws_vpc.my-vpc.id
 
   ingress {
+    description = "allow tcp connection in port 22"
     from_port   = 22
     protocol    = "tcp"
     to_port     = 22
@@ -21,6 +22,7 @@ resource "aws_security_group" "http-ssh-security-group" {
   }
 
   ingress {
+    description = "allow tcp connection in port 80"
     from_port   = 80
     protocol    = "tcp"
     to_port     = 80
@@ -28,6 +30,7 @@ resource "aws_security_group" "http-ssh-security-group" {
   }
 
   egress {
+    description = "allow all egress traffic"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -35,6 +38,6 @@ resource "aws_security_group" "http-ssh-security-group" {
   }
 
   tags = {
-    Name = "http-ssh-security-group"
+    Name = var.security-group-name
   }
 }
