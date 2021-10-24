@@ -5,7 +5,7 @@ resource "aws_route_table" "public-route-table" {
   vpc_id = aws_vpc.my-vpc.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = var.public-route-table-cidr-block
     gateway_id = aws_internet_gateway.my-igw.id
   }
 

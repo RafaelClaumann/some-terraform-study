@@ -1,5 +1,5 @@
 resource "aws_vpc" "my-vpc" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.vpc-cidr-block
 
   instance_tenancy     = "default"
   enable_dns_support   = true
