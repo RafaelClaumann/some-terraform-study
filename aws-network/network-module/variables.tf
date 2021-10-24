@@ -1,15 +1,3 @@
-variable "aws_region" {
-  description = "Current aws region"
-  type        = string
-  default     = "us-east-1"
-}
-
-variable "programmatic-access-profile" {
-  description = "profile name for an user with programmatic access to aws"
-  type = string
-  default = "default"
-}
-
 variable "vpc-name" {
   description = "Defines vpc name tag"
   type        = string

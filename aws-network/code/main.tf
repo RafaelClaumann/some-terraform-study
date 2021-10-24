@@ -1,5 +1,5 @@
 provider "aws" {
-  region  = var.aws_region
+  region  = "us-east-1"
   profile = "terraform-study"
 }
 
@@ -8,9 +8,6 @@ provider "aws" {
 */
 module "network" {
   source = "../network-module/"
-
-  aws_region                  = "us-east-1"
-  programmatic-access-profile = "terraform-study"
 
   vpc-name              = "vpc-pessoal"
   public-subnet-name    = "subnet-publica"
