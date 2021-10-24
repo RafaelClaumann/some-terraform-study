@@ -29,3 +29,15 @@ output "public-subnet-az" {
 output "public-subnet-cidr" {
   value = aws_subnet.public-subnet.cidr_block
 }
+
+output "public-route-table-arn" {
+  value = aws_route_table.public-route-table.arn
+}
+
+output "public-route-table-igw-id" {
+  value = aws_route_table.public-route-table.tags["igw-id"]
+}
+
+output "public-route-table-vpc-id" {
+  value = aws_route_table.public-route-table.tags["vpc-id"]
+}
