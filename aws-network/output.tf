@@ -14,6 +14,10 @@ output "my-vpc-default-rt" {
   value = aws_vpc.my-vpc.default_route_table_id
 }
 
+output "my-internet-gateway-arn" {
+  value = aws_internet_gateway.my-igw.arn
+}
+
 output "public-subnet-arn" {
   value = aws_subnet.public-subnet.arn
 }
