@@ -16,23 +16,16 @@ resource "aws_key_pair" "ssh-key" {
 }
 
 resource "aws_instance" "ubuntu" {
-  key_name = aws_key_pair.ssh-key.key_name
-
   ami           = data.aws_ami.ubuntu_ami.image_id
   instance_type = "t2.micro"
+
+  key_name  = aws_key_pair.ssh-key.key_name
+  user_data = file("scripts/bootstrap-ec2.sh")
 
   availability_zone           = module.network.public-subnet-az
   subnet_id                   = module.network.public-subnet-id
   vpc_security_group_ids      = [module.network.security-group-id]
   associate_public_ip_address = true
-
-  user_data = <<-EOF
-    #!/bin/bash
-    apt-get update
-    apt-get install apache2 -y
-    systemctl start apache2
-    systemctl enable apache2
-    EOF
 
   tags = {
     Name        = "ubuntu-instance"
