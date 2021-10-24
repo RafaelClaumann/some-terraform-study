@@ -37,3 +37,8 @@ output "security-group-egress" {
   description = "security_group_egress_rules output from network-module"
   value       = module.network.security-group-egress
 }
+
+output "ec2-public-ip" {
+  description = "public-ip output from ec2-instance-resource"
+  value       = aws_instance.ubuntu.public_ip
+}
