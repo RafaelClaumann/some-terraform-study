@@ -10,6 +10,8 @@ data "aws_ami" "ubuntu_ami" {
   owners = ["099720109477"]
 }
 
+# é preciso gerar um par de chaves com nome key e key.pub na pasta ~/.aws/ec2-ssh 
+# basta executar o comando(ssh-keygen -q -t rsa -f key -N '') na pasta /ec2-ssh
 resource "aws_key_pair" "ssh-key" {
   key_name   = "key"
   public_key = file("~/.aws/ec2-ssh/key.pub")
