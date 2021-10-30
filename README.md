@@ -11,6 +11,13 @@ As pastas dos laboratórios possuem arquivos README para ajudar a compreender o 
 
 ## Guias
 - [Install Terraform (*5:22*) & AWS CLI (*14:35*)](https://youtu.be/bYvdJKTwx_I?t=874)
+- Exemplo arquivo **~/.aws/credentials**
+  ```bash
+    [terraform-study]
+    aws_access_key_id = <YOUR_ACCESS_KEY>
+    aws_secret_access_key = <YOUR_SECRET_KEY>
+
+  ```
 
 
 ## 💻 Comandos Basicos
