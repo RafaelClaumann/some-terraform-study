@@ -1,4 +1,0 @@
-- [aws policy generator](https://awspolicygen.s3.amazonaws.com/policygen.html)
-- [iam_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group)
-- [iam_group_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy)
-- [iam_group_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy_attachment)
