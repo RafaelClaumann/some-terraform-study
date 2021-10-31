@@ -18,60 +18,32 @@
   
 ```
 
-```hcl
-        ## VPC ##
-        ip: 192.168.0.0/16
-        mask: 255.255.0.0 (11111111.11111111.00000000.00000000)
-
-        ## FUNCTION ##
-        cidrsubnet(aws_vpc.main.cidr_block, 6, 10)
-
-        ## SUBNET ##
-        ip: 192.168.40.0/22
-        mask: 255.255.252.0 (11111111.11111111.11111100.00000000)
-        network: 192.168.40.0
-        broadcast: 192.168.40.255
-        hosts: (2^10) - 2 = 1022
-```
-
 ``` hcl
-    cidrsubnet("192.168.0.0/16", 6, 10)
-    
-    # 1) Rede original
-       255         255         0         0  
-       192         168         0         0       /16
-    11000000   10101000 |  00000000   00000000
-    parent network      |         host
-     
-    # 2) Adicionando 6 bits a máscara
-       255        255        252          0
-       192        168        10           0      /22
-    11000000   10101000 |  001010 | 00  00000000
-    parent network      |  netnum |    hosts
-    
-    # 3) Resultado final em decimal/binario
-       255        255        252          0
-       192        168        40           0      /22
-    11000000   10101000 |  00101000 | 00000000
-    parent network      |  netnum   |    hosts
-    
-    Porque o ip ficou 192.168.40.0 se eu passei 10 como parâmetro?
-      001010 = 10
-      00101000 = 2^2 * 10 = 40
-      Acontece no passo 3 quando reagrupamos os bits para fazer
-      a representação decimal.
-        
-    sub-net 1: 
-        192.168.40.0 -> 192.168.40.255 => (256 - 2) = 254 hosts
-        192.168.41.0 -> 192.168.41.255 => (256 - 2) = 254 hosts
-        192.168.42.0 -> 192.168.42.255 => (256 - 2) = 254 hosts
-        192.168.43.0 -> 192.168.43.255 => (256 - 2) = 254 hosts
-    
-    sub-net 2:
-        192.168.44.0 -> 192.168.44.255 => (256 - 2) = 254 hosts
-        (...)
+OUTRO EXEMPLO:
+    cidrsubnet("10.1.2.0/24", 4, 15)
 
-    sub-net 3:
-        192.168.47.0 -> 192.168.48.255 => (256 - 2) = 254 hosts
-        (...)
+    ------------------------------------------------
+       10        1       2           0    /24 
+    00001010 00000001 00000010 | 00000000 
+           network             |   host
+    ------------------------------------------------
+       10        1       2         ?       0  /28
+    00001010 00000001 00000010 |  XXXX  | 0000
+          parent network       | netnum | host
+    ------------------------------------------------
+       10        1       2         15      0  /28
+    00001010 00000001 00000010 |  1111  | 0000
+          parent network       | netnum | host
+    ------------------------------------------------
+       10         1       2        240   /28
+    00001010 00000001 00000010 | 11110000
+         parent network        | netnum+host
+    ------------------------------------------------
+
+# To convert this back into normal decimal notation we need to recombine the two portions of the final octet.
+# Converting 11110000 from binary to decimal gives 240, which can then be combined with our new
+# prefix length of 28 to produce the result 10.1.2.240/28
+
+# The new subnet has four bits available for host numbering, which means that there are 14 host addresses
+# available for assignment once we subtract the network's own address and the broadcast address. 
 ```
