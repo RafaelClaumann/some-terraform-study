@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 resource "aws_sns_topic" "my_topic" {
   name = var.topic_name
 }
@@ -23,6 +25,15 @@ resource "aws_sqs_queue_policy" "sqs_policy" {
     "Version": "2012-10-17",
     "Id": "__default_policy_ID",
     "Statement": [
+      {
+        "Sid": "enable-iam",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "${data.aws_caller_identity.current.account_id}"
+        },
+        "Action": ["SQS:SendMessage", "SQS:ReceiveMessage"],
+        "Resource": "${aws_sqs_queue.my_queue.arn}"
+      },
       {
         "Sid": "topic-subscription",
         "Effect": "Allow",
