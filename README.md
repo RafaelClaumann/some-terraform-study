@@ -9,6 +9,7 @@ As pastas dos laboratórios possuem arquivos README para ajudar a compreender o 
 - [LAB02: do-basico-a-modulos](https://github.com/RafaelClaumann/some-terraform-study/tree/do-basico-a-modulos) `/do-basico-a-modulos/`
 - [LAB03: aws-vpc-gateway-routetable-terraform](https://github.com/RafaelClaumann/some-terraform-study/tree/aws-vpc-gateway-routetable-terraform) `/aws-network/`
 - [LAB04: aws-vpc-2.0](https://github.com/RafaelClaumann/some-terraform-study/tree/aws-vpc-2.0/) `/aws-vpc/`
+- [LAB05: aws-sqs-sns](https://github.com/RafaelClaumann/some-terraform-study/tree/aws-sqs-sns) `/aws-sqs-sns/`
 
 ## Guias
 - [Install Terraform (*5:22*) & AWS CLI (*14:35*)](https://youtu.be/bYvdJKTwx_I?t=874)
