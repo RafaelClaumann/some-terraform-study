@@ -1,4 +1,4 @@
-resource "aws_sns_topic" "my_sns" {
+resource "aws_sns_topic" "my_topic" {
   name = var.topic_name
 }
 
@@ -33,7 +33,7 @@ resource "aws_sqs_queue_policy" "sqs_policy" {
         "Resource": "${aws_sqs_queue.my_queue.arn}",
         "Condition": {
           "ArnEquals": {
-            "aws:SourceArn": "${aws_sns_topic.my_sns.arn}"
+            "aws:SourceArn": "${aws_sns_topic.my_topic.arn}"
           }
         }
       }
@@ -44,6 +44,6 @@ resource "aws_sqs_queue_policy" "sqs_policy" {
 
 resource "aws_sns_topic_subscription" "sqs_sns_subscription" {
   protocol  = "sqs"
-  topic_arn = aws_sns_topic.my_sns.arn
+  topic_arn = aws_sns_topic.my_topic.arn
   endpoint  = aws_sqs_queue.my_queue.arn
 }

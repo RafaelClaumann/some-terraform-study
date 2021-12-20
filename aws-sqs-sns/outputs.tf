@@ -1,5 +1,5 @@
 output "sns_arn" {
-  value = aws_sns_topic.my_sns.arn
+  value = aws_sns_topic.my_topic.arn
 }
 
 output "sqs_arn" {
