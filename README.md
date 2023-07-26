@@ -1,10 +1,6 @@
 # some-terraform-study
 
-Repositório utilizado para armazenar laboratórios de Terraform. <br>
-A branch master representa a junção de todos os laboratórios. <br>
-Para cada novo laboratório uma nova branch é criada e, ao final do laboratório, é feito um merge com a master. <br>
-As pastas dos laboratórios possuem arquivos README para ajudar a compreender o que foi realizado. <br>
-
+Repositório utilizado para armazenar laboratórios de Terraform.
 - [aws-network](https://github.com/RafaelClaumann/some-terraform-study/tree/main/aws-network)
 - [aws-sqs-sns](https://github.com/RafaelClaumann/some-terraform-study/tree/main/aws-sqs-sns)
 - [aws-vpc](https://github.com/RafaelClaumann/some-terraform-study/tree/main/aws-vpc)
