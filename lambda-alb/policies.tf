@@ -11,29 +11,18 @@ data "aws_iam_policy_document" "trust_policy" {
   }
 }
 
+# create lambda_execution_role with trust_policy
 resource "aws_iam_role" "lambda_execution_role" {
   name               = "lambda_execution_role"
   assume_role_policy = data.aws_iam_policy_document.trust_policy.json
 }
 
-data "aws_iam_policy_document" "cloudwatch_policy_document" {
-  statement {
-    effect    = "Allow"
-    actions   = [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-    ]
-    resources = ["arn:aws:logs:us-east-1:*:*"]
-  }
+data "aws_iam_policy" "lambda_basic_policy" {
+  name = "AWSLambdaBasicExecutionRole"
 }
 
-resource "aws_iam_policy" "cloudwatch_policy" {
-  name        = "lambda_cloudwatch_policy"
-  policy      = data.aws_iam_policy_document.cloudwatch_policy_document.json
-}
-
-resource "aws_iam_role_policy_attachment" "cloudwatch_policy_attach" {
+# attach lambda basic_policy to lambda_execution_role
+resource "aws_iam_role_policy_attachment" "lambda_role_policy_attach" {
   role       = aws_iam_role.lambda_execution_role.name
-  policy_arn = aws_iam_policy.cloudwatch_policy.arn
+  policy_arn = data.aws_iam_policy.lambda_basic_policy.arn
 }
