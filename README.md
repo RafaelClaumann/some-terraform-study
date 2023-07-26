@@ -5,6 +5,7 @@ Repositório utilizado para armazenar laboratórios de Terraform.
 - [aws-sqs-sns](https://github.com/RafaelClaumann/some-terraform-study/tree/main/aws-sqs-sns)
 - [aws-vpc](https://github.com/RafaelClaumann/some-terraform-study/tree/main/aws-vpc)
 - [do-basico-a-modulos](https://github.com/RafaelClaumann/some-terraform-study/tree/main/do-basico-a-modulos)
+- [lambda-alb](https://github.com/RafaelClaumann/some-terraform-study/tree/main/lambda-alb) 
 - [terraform-101](https://github.com/RafaelClaumann/some-terraform-study/tree/main/terraform-101)
 
 ## Guias
