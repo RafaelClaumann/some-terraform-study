@@ -9,7 +9,7 @@ Repositório utilizado para armazenar laboratórios de Terraform.
 
 ## Guias
 - [Install Terraform (*5:22*) & AWS CLI (*14:35*)](https://youtu.be/bYvdJKTwx_I?t=874)
-- Exemplo arquivo **~/.aws/credentials**
+- Exemplo do formato do arquivo **~/.aws/credentials**
   ```bash
     [terraform-study]
     aws_access_key_id = <YOUR_ACCESS_KEY>
@@ -19,12 +19,13 @@ Repositório utilizado para armazenar laboratórios de Terraform.
 
 
 ## 💻 Comandos Basicos
-
-`terraform init`  # download do(s) provider(s) <br>
-`terraform fmt`  # formatar o código <br>
-`terraform plan`  # planejar execução <br>
-`terraform apply`  # implantar infraestrutura <br>
-`terraform destroy`  # destruir infraestrutura <br>
+``` bash
+terraform init  # download do(s) provider(s)
+terraform fmt  # formatar o código
+terraform plan  # planejar execução
+terraform apply  # implantar infraestrutura
+terraform destroy  # destruir infraestrutura
+```
 
 
 ## :bricks: Blocos Basicos
@@ -39,8 +40,8 @@ provider "aws" {
 ```
 
 ### Resource
-Bloco utilizado para criar recursos. <br>
-O nome **"server"** é utilizado para referenciar o recurso em outros arquivos terraform.
+Bloco utilizado para criar recursos disponibilizados pelo provider. <br>
+O nome **"server"** pode ser utilizado para referenciar o recurso em outros arquivos terraform.
 ``` hcl
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
 resource "aws_instance" "server" {
@@ -50,9 +51,7 @@ resource "aws_instance" "server" {
 ```
 
 ### Variable
-Bloco para declarar variveis acessíveis/acessadas a partir de outros arquivos terraform. <br>
-O nome **"region"** foi escolhido arbitráriamente, este repositório tem as [variables](https://github.com/RafaelClaumann/some-terraform-work/blob/main/terraform-101/variables.tf)
-que são utilizadas no [ec2-instance.tf](https://github.com/RafaelClaumann/some-terraform-work/blob/main/terraform-101/ec2-instance.tf) e [main.tf](https://github.com/RafaelClaumann/some-terraform-work/blob/main/terraform-101/main.tf)
+Bloco usado para declarar variáveis. Essas variáveis podem ser acessadas em outros arquivos terraform e devem ser preenchidas na execução dos comandos plan e/ou apply.<br>
 ``` hcl
 variable "region" {
   type        = string # numer, boolean, list, map
@@ -60,14 +59,14 @@ variable "region" {
   description = "define instance region"
 }
 
-# acessing: var.list_example[0]
+# acessing_list: var.list_example[0]
 variable "list_example" {
   type        = list 
   description = "list example varible"
   default     = ["first_item", "second_item", "third_item"]
 }
 
-# acessing: var.amis["us-east-1"]
+# acessing_map: var.amis["us-east-1"]
 variable "amis" {
   type    = map
   default = {
@@ -77,10 +76,13 @@ variable "amis" {
 }
 ```
 ### Output
-Bloco util que para exibir informações na tela, seu uso é bastante conveniente para extrair informaçõe dos **resources**.<br>
-É possível encontrar os **outputs** para cada **resource** na [documentação](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) do provider. <br>
-Os nomes **"public_ip"** & **"instance_region"** foram escolhidos abitráriamente, este repositório contém estas [outputs](https://github.com/RafaelClaumann/some-terraform-work/blob/main/terraform-101/output.tf).
+Bloco útil para exibir informações na tela após a criação dos recursos, seu uso é bastante conveniente para extrair dados dos **resources**.
+
+É possível encontrar os **outputs** padrões para cada **resource** na [documentação](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) do provider.
+
+Os nomes **"public_ip"** & **"instance_region"** foram escolhidos abitráriamente.
 ``` hcl
+# value = resource.resource_name.default_output
 output "public_ip" {
   value = aws_instance.ubuntu.public_ip
 }
@@ -90,10 +92,11 @@ output "instance_region" {
 }
 ```
 ### Data
-Bloco utilizado para buscar informações sobre os recursos do provider em tempo de execução. <br>
-O exemplo abaixo mostra como o bloco **data** pode ser configurado para buscar a versão mais recente de uma **ami** na aws. <br>
-o bloco **resouce** dos exemplos anteriores fez referencia ao retorno do bloco **data** para definir a imagem da instancia EC2.<br>
-Um exemplo de uso do bloco **data** pode ser encontrado no arquivo [ec2-instance.tf](https://github.com/RafaelClaumann/some-terraform-work/blob/main/terraform-101/ec2-instance.tf) na branch **terraform-101**.
+Bloco utilizado para buscar informações dos recursos existentes no provider em tempo de execução.
+
+O exemplo abaixo mostra um bloco **data** configurado para buscar a versão mais recente de uma **ami** na aws.
+
+O bloco **resouce** dos exemplos anteriores fez referencia ao retorno do bloco **data** mostrado abaixo para definir a imagem usada na instancia EC2.
 ``` hcl
 data "aws_ami" "ubuntu" {
   most_recent = true
