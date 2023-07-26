@@ -5,11 +5,11 @@ A branch master representa a junção de todos os laboratórios. <br>
 Para cada novo laboratório uma nova branch é criada e, ao final do laboratório, é feito um merge com a master. <br>
 As pastas dos laboratórios possuem arquivos README para ajudar a compreender o que foi realizado. <br>
 
-- [LAB01: terraform-101](https://github.com/RafaelClaumann/some-terraform-study/tree/terraform-101) `/terraform-101/`
-- [LAB02: do-basico-a-modulos](https://github.com/RafaelClaumann/some-terraform-study/tree/do-basico-a-modulos) `/do-basico-a-modulos/`
-- [LAB03: aws-vpc-gateway-routetable-terraform](https://github.com/RafaelClaumann/some-terraform-study/tree/aws-vpc-gateway-routetable-terraform) `/aws-network/`
-- [LAB04: aws-vpc-2.0](https://github.com/RafaelClaumann/some-terraform-study/tree/aws-vpc-2.0/) `/aws-vpc/`
-- [LAB05: aws-sqs-sns](https://github.com/RafaelClaumann/some-terraform-study/tree/aws-sqs-sns) `/aws-sqs-sns/`
+- [aws-network](https://github.com/RafaelClaumann/some-terraform-study/tree/main/aws-network)
+- [aws-sqs-sns](https://github.com/RafaelClaumann/some-terraform-study/tree/main/aws-sqs-sns)
+- [aws-vpc](https://github.com/RafaelClaumann/some-terraform-study/tree/main/aws-vpc)
+- [do-basico-a-modulos](https://github.com/RafaelClaumann/some-terraform-study/tree/main/do-basico-a-modulos)
+- [terraform-101](https://github.com/RafaelClaumann/some-terraform-study/tree/main/terraform-101)
 
 ## Guias
 - [Install Terraform (*5:22*) & AWS CLI (*14:35*)](https://youtu.be/bYvdJKTwx_I?t=874)
